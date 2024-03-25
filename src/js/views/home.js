@@ -1,36 +1,57 @@
-import React, { useEffect, useState, useContext} from "react";
+import React, { useEffect, useState, useContext } from "react";
 import { Context } from "../store/appContext.js";
 import rigoImage from "../../img/rigo-baby.jpg";
 import "../../styles/home.css";
 
 import { CardPeople } from "../component/cardpeople.jsx";
+import { CardPlanet } from "../component/cardplanet.jsx";
 
 export const Home = () => {
 
 	const { store, actions } = useContext(Context)
 
 	useEffect(() => {
-		actions.getPeople()
+		actions.getPeople(),
+		actions.getPlanets()
 	}, [])
 
 	console.log(store.peoples);
+	console.log(store.planets);
 
 	return (
-	<>
-		<h1 className="text-danger">Characters</h1>
-			<div>
+		<>
+			<h1 className="text-danger ms-5">Characters</h1>
+			<div className="d-flex mx-4" style={{overflowX: "scroll"}}>
 				{store.peoples.map((people) => {
-						return (
-							<li key={people.uid}>
-								<CardPeople people={people} 
-											name={people.name}
-											
-											/>
-							</li>
-						)
-					})
-				}
+					return (
+						<div className="text m-3" key={people.uid}>
+
+							<CardPeople people={people}
+								name={people.name}
+
+							/>
+
+						</div>
+					);
+				})}
 			</div>
-	</>
+
+			<h1 className="text-danger mt-3 ms-5">Planets</h1>
+			<div className="d-flex mx-4" style={{overflowX: "scroll"}}>
+				{store.planets.map((planet) => {
+					return (
+						<div className="text m-3" key={planet.uid}>
+
+							<CardPlanet planets={planet}
+								name={planet.name}
+
+							/>
+
+						</div>
+					);
+				})}
+			</div>
+
+		</>
 	)
 };
