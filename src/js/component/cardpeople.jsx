@@ -17,7 +17,8 @@ export const CardPeople = ({people}) => {
 		  <p className="card-text">Gender: </p>
           <p className="card-text">Hair color: </p>
 		  <p className="card-text">Eye color: </p>
-          <a href="#" className="btn btn-primary">Learn more!</a>
+          <a href="#" className="btn btn-outline-primary">Learn more!</a>
+          <a href="#" className="btn btn-outline-warning"><i className="fa-regular fa-heart"></i></a>
         </div>
       </div>
 	);
