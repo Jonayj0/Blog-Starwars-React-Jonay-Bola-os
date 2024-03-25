@@ -16,16 +16,16 @@ export const Home = () => {
 	console.log(store.peoples);
 
 	return (
-<>
-	<div className="text-center mt-5">
+	<>
 		<h1 className="text-danger">Characters</h1>
-		</div>
 			<div>
-				{
-					store.peoples.map((people) => {
+				{store.peoples.map((people) => {
 						return (
 							<li key={people.uid}>
-								<CardPeople people={people} />
+								<CardPeople people={people} 
+											name={people.name}
+											
+											/>
 							</li>
 						)
 					})

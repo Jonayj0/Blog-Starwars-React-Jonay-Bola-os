@@ -13,8 +13,10 @@ export const CardPeople = ({people}) => {
         <div className="card" style={{width: "18rem"}}>
         <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQHiNvdbw8vVSnZ0AGw-AyiG85_10C2NRkzjPO9XZ9B3A&s" className="card-img-top" alt="..."/>
         <div className="card-body">
-          <h5 className="">{people.name}</h5>
-          <p className="gender">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+          <h5 className="card-text">{people.name}</h5>
+		  <p className="card-text">Gender: </p>
+          <p className="card-text">Hair color: </p>
+		  <p className="card-text">Eye color: </p>
           <a href="#" className="btn btn-primary">Learn more!</a>
         </div>
       </div>

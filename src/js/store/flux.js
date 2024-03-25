@@ -21,7 +21,9 @@ const getState = ({ getStore, getActions, setStore }) => {
 				getActions().changeColor(0, "green");
 			},
 			getPeople: () => {
-				fetch("https://www.swapi.tech/api/people/")
+				fetch("https://www.swapi.tech/api/people/", {
+					method: 'GET'
+				})
 				.then(res => res.json())
 				.then(data => setStore({peoples: data.results}))
 				.catch(err => console.error(err))
