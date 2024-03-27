@@ -1,0 +1,10 @@
+.img-left {
+    width: 600px;
+    height: 400px;
+    padding-bottom: 80px;
+    padding-right: 50px;
+    margin-left: 0px;
+}
+.detalles {
+    border-bottom: 3px solid red;
+}

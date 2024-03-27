@@ -7,4 +7,7 @@
 .logostarwars {
     width: 90px;
     margin-left: 8%;
+    filter: drop-shadow(
+        1px 1px 1px rgba(0, 0, 0, .9)
+    );
 }
