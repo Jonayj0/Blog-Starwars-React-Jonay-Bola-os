@@ -5,6 +5,7 @@ import "../../styles/home.css";
 
 import { CardPeople } from "../component/cardpeople.jsx";
 import { CardPlanet } from "../component/cardplanet.jsx";
+import { CardVehicles } from "../component/cardvehicles.jsx";
 
 export const Home = () => {
 
@@ -12,11 +13,15 @@ export const Home = () => {
 
 	useEffect(() => {
 		actions.getPeople(),
-		actions.getPlanets()
+		actions.getPlanets(),
+		actions.getVehicles(),
+		actions.getPeopleProperties()
 	}, [])
 
-	console.log(store.peoples);
-	console.log(store.planets);
+	// console.log(store.peoples);
+	// console.log(store.planets);
+	// console.log(store.vehicles);
+	console.log(store.properties);
 
 	return (
 		<>
@@ -44,6 +49,22 @@ export const Home = () => {
 
 							<CardPlanet planets={planet}
 								name={planet.name}
+
+							/>
+
+						</div>
+					);
+				})}
+			</div>
+
+			<h1 className="text-danger mt-3 ms-5">Vehicles</h1>
+			<div className="d-flex mx-4" style={{overflowX: "scroll"}}>
+				{store.vehicles.map((vehicle) => {
+					return (
+						<div className="text m-3" key={vehicle.uid}>
+
+							<CardVehicles vehicles={vehicle}
+								name={vehicle.name}
 
 							/>
 

@@ -4,12 +4,12 @@ import "../../styles/navbar.css";
 
 export const Navbar = () => {
 	return (
-		<nav className="navbar navbar-light bg-light mb-3 ">
+		<nav className="navbar navbar-light bg-light mb-3 py-4">
 			<Link to="/">
-				<span className="navbar-brand mb-0 h1 ms-5"><h1><i className="fa-brands fa-old-republic ms-5"></i></h1></span>
+				<span className="navbar-brand mb-0 h1 ms-5"><img className="logostarwars" src="https://logos-marcas.com/wp-content/uploads/2020/11/Star-Wars-Logo.png" alt=""/></span>
 			</Link>
 			<div className="ml-auto">
-				<Link to="/demo">
+				{/* <Link to="/demo"> */}
 					{/* <button className="btn btn-primary me-5">Favorites</button>
 					<!-- Example single danger button --> */}
 					<div className="btn-group me-5">
@@ -24,7 +24,7 @@ export const Navbar = () => {
 							<li><a className="dropdown-item" href="#">Separated link</a></li>
 						</ul>
 					</div>
-				</Link>
+				{/* </Link> */}
 			</div>
 		</nav>
 	);
