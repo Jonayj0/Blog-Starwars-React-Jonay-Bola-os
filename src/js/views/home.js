@@ -1,6 +1,5 @@
 import React, { useEffect, useState, useContext } from "react";
 import { Context } from "../store/appContext.js";
-import rigoImage from "../../img/rigo-baby.jpg";
 import "../../styles/home.css";
 
 import { CardPeople } from "../component/cardpeople.jsx";

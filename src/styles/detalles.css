@@ -5,6 +5,7 @@
     padding-right: 50px;
     margin-left: 0px;
 }
-.detalles {
-    border-bottom: 3px solid red;
+.tittle-top {
+    border-bottom: 1px solid red;
+    margin-bottom: 20px;
 }
