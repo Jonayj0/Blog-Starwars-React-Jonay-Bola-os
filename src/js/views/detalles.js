@@ -20,17 +20,20 @@ export const Detalles = () => {
         // actions.getVehicles()
     }, [])
 
-    console.log(store.properties.description);
+    console.log(store.properties);
 
     return (
         <>
             <div className="jumbotron mx-5">
+                {/* {store.properties.map((item) => {
+                return (
+                <li key={item.uid}><Link to={"detalles/"+item.uid}></Link>{properties.name}</li>);})} */}
                 <div className="tittle-top d-flex">
                     <img src="https://productroulette.com/_nuxt/img/blog1.d1e9eb0.jpg" className="img-left" alt="..." />
                     <div className="detalles-personaje d-block text-center">
                         <h1 className="titulo-nombre">LUKE SKYWALKER </h1>
                         {/* {store.properties.map((item) => <li key={item.uid}><Link to={"detalles/"+item.uid}></Link>{properties.name}</li>)} */}
-                        <p className="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
+                        <p className="description">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
                     </div>
                 </div>
                 <div className="tittle-bottom d-flex justify-content-around text-center text-danger mb-3">
