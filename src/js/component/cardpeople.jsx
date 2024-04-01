@@ -10,6 +10,9 @@ export const CardPeople = ({ people }) => {
   const { store, actions } = useContext(Context)
   // console.log(people);
 
+  function addFavorites() {
+    actions.addFavorite()
+  }
 
   return (
     <div className="card" style={{ width: "18rem" }}>
@@ -22,7 +25,7 @@ export const CardPeople = ({ people }) => {
         <Link to={"/detalles/" + people.uid}>
           <button href="#" className="btn btn-outline-primary me-5">Learn more!</button>
         </Link>
-        <a href="#" className="btn btn-outline-warning ms-5"><i className="fa-regular fa-heart"></i></a>
+        <a href="#" className="btn btn-outline-warning ms-5" onClick={{addFavorites}}><i className="fa-regular fa-heart"></i></a>
       </div>
     </div>
   );
