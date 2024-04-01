@@ -29,3 +29,6 @@ export const Navbar = () => {
 		</nav>
 	);
 };
+
+
+{/* {store.properties.map((item) => <li key={item.uid}><Link to={"detalles/"+item.uid}></Link>{properties.name}</li>)} */}

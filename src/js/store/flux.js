@@ -4,8 +4,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 			favorites: [],
 			peoples: [],
 			planets: [],
-			vehicles:[],
-			properties: []
+			vehicles: [],
+			info: []
 		},
 		actions: {
 			// Use getActions to call a function within a fuction
@@ -16,38 +16,38 @@ const getState = ({ getStore, getActions, setStore }) => {
 				fetch("https://www.swapi.tech/api/people/", {
 					method: 'GET'
 				})
-				.then(res => res.json())
-				.then(data => setStore({peoples: data.results}))
-				.catch(err => console.error(err))
-              
+					.then(res => res.json())
+					.then(data => setStore({ peoples: data.results }))
+					.catch(err => console.error(err))
+
 			},
 			getPlanets: () => {
 				fetch("https://www.swapi.tech/api/planets/", {
 					method: 'GET'
 				})
-				.then(res => res.json())
-				.then(data => setStore({planets: data.results}))
-				.catch(err => console.error(err))
-              
+					.then(res => res.json())
+					.then(data => setStore({ planets: data.results }))
+					.catch(err => console.error(err))
+
 			},
 			getVehicles: () => {
 				fetch("https://www.swapi.tech/api/vehicles/", {
 					method: 'GET'
 				})
-				.then(res => res.json())
-				.then(data => setStore({vehicles: data.results}))
-				.catch(err => console.error(err))
-              
+					.then(res => res.json())
+					.then(data => setStore({ vehicles: data.results }))
+					.catch(err => console.error(err))
+
 			},
-			getPeopleProperties: () => {
+			getInfo: (id) => {
 				const requestOptions = {
 					method: "GET",
 					redirect: "follow"
-				  };
-				  
-				  fetch("https://www.swapi.tech/api/people/1", requestOptions)
+				};
+
+				fetch("https://www.swapi.tech/api/people/" + id, requestOptions)
 					.then((response) => response.json())
-					.then((result) => setStore({properties: result.result}))
+					.then((result) => setStore({ info: result.result }))
 					// .then((result) => console.log(result.result))
 					.catch((error) => console.error(error));
 			},

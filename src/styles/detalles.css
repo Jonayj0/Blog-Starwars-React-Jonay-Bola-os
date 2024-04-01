@@ -9,3 +9,7 @@
     border-bottom: 1px solid red;
     margin-bottom: 20px;
 }
+.jumbotron {
+    margin-left: 100px;
+    margin-right: 100px;
+}
