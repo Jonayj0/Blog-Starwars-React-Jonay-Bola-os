@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import { Context } from "../store/appContext.js";
 import { Link } from "react-router-dom";
+import { useParams } from "react-router";
 // import "../../styles/cardpeople.css";
 import { Detalles } from "../views/detalles.js";
 
@@ -9,6 +10,8 @@ export const CardPeople = ({ people }) => {
 
   const { store, actions } = useContext(Context)
   // console.log(people);
+
+  // const params = useParams()
 
   function addFavorites() {
     actions.addFavorite()
@@ -22,7 +25,7 @@ export const CardPeople = ({ people }) => {
         <p className="card-text">Gender: </p>
         <p className="card-text">Hair color: </p>
         <p className="card-text">Eye color: </p>
-        <Link to={"/detalles/" + people.uid}>
+        <Link to={"/detalles/"+people.uid}>
           <button href="#" className="btn btn-outline-primary me-5">Learn more!</button>
         </Link>
         <a href="#" className="btn btn-outline-warning ms-5" onClick={{addFavorites}}><i className="fa-regular fa-heart"></i></a>

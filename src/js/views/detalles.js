@@ -33,7 +33,7 @@ export const Detalles = () => {
         <>
             <div className="jumbotron">
                 <div className="tittle-top d-flex justify-content-evenly">
-                    <img src="https://productroulette.com/_nuxt/img/blog1.d1e9eb0.jpg" className="img-left" alt="..." />
+                    <img src={`https://starwars-visualguide.com/assets/img/characters/${params.uid}.jpg`} className="img-left" alt="..." />
                     <div className="detalles-personaje d-block justify-content-center text-center">
                         <h1 className="titulo-nombre">{store.info?.properties?.name}</h1>
                         <p className="description">{store.info?.description}</p>
