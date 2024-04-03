@@ -9,7 +9,7 @@ import "../../styles/detalles.css";
 export const Detalles = () => {
 
     const params = useParams()
-    console.log(params.uid);
+    console.log(params);
 
     const { store, actions } = useContext(Context)
 
@@ -19,7 +19,7 @@ export const Detalles = () => {
 
 
     useEffect(() => {
-        actions.getInfo(params.uid)
+        actions.getInfo(params.type, params.uid)
         // actions.getPeople(),
         // actions.getPlanets(),
         // actions.getVehicles()

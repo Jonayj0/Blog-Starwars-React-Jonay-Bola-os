@@ -39,13 +39,13 @@ const getState = ({ getStore, getActions, setStore }) => {
 					.catch(err => console.error(err))
 
 			},
-			getInfo: (id) => {
+			getInfo: (type, id) => {
 				const requestOptions = {
 					method: "GET",
 					redirect: "follow"
 				};
 
-				fetch("https://www.swapi.tech/api/people/" + id, requestOptions)
+				fetch(`https://www.swapi.tech/api/${type}/` + id, requestOptions)
 					.then((response) => response.json())
 					.then((result) => setStore({ info: result.result }))
 					// .then((result) => console.log(result.result))
@@ -53,7 +53,12 @@ const getState = ({ getStore, getActions, setStore }) => {
 			},
 			// addFavorite: () => {
 
-			// },
+		//  },
+			// deleteFavorite: (position) {
+			// 	const arrayfiltered = tasks.filter((item, index) => index !== position)
+			// 	setStore(favorites)
+			// 	putTask(arrayfiltered);
+		//  },
 			changeColor: (index, color) => {
 				//get the store
 				const store = getStore();
