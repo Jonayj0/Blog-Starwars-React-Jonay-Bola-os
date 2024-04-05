@@ -48,39 +48,18 @@ const getState = ({ getStore, getActions, setStore }) => {
 				fetch(`https://www.swapi.tech/api/${type}/` + id, requestOptions)
 					.then((response) => response.json())
 					.then((result) => setStore({ info: result.result }))
-					// .then((result) => console.log(result.result))
 					.catch((error) => console.error(error));
 			},
-			addFavorite: (favorito) => {
-				
+			addFavorite: (favorite) => {
 					const store = getStore();
-					
-					const newArray= store.favorites.concat(favorito)
+					const newArray= store.favorites.concat(favorite)
 					setStore({ favorites: newArray })
-					
-			//  const add = store.favorites.map((item))
-			//  setStore(favorites)
 		 	},
 			deleteFavorite: (name) => {
-				
 				const arrayfiltered = getStore().favorites.filter((item, index) => item !== name)
 				console.log(arrayfiltered);
 				setStore({ favorites: arrayfiltered })
-		 },
-			changeColor: (index, color) => {
-				//get the store
-				const store = getStore();
-
-				//we have to loop the entire demo array to look for the respective index
-				//and change its color
-				const demo = store.demo.map((elm, i) => {
-					if (i === index) elm.background = color;
-					return elm;
-				});
-
-				//reset the global store
-				setStore({ demo: demo });
-			}
+		 	}
 		}
 	};
 };

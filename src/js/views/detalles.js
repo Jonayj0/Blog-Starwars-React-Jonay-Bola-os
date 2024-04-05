@@ -48,27 +48,47 @@ export const Detalles = () => {
                         <div className="birth-body d-block">
                             <h5 className="birth-title">{params.type === "people" ? "Birth year" :
                                                         params.type === "planets" ? "Climate" :
-                                                        params.type === "vehicles" ? "Crew" : ""}</h5>
+                                                        params.type === "vehicles" ? "Model" : ""}</h5>
                             <p className="birth-text">{
                                         params.type == "people" ? store.info?.properties?.birth_year :
                                         params.type == "planets" ? store.info?.properties?.climate :
-                                        params.type == "vehicles" ? store.info?.properties?.crew : ""}</p>
+                                        params.type == "vehicles" ? store.info?.properties?.model : ""}</p>
                         </div>
                         <div className="gender-body d-block">
-                            <h5 className="gender-title">Gender</h5>
-                            <p className="gender-text">{store.info?.properties?.gender}</p>
+                            <h5 className="gender-title">{params.type === "people" ? "Gender" :
+                                                        params.type === "planets" ? "Diameter" :
+                                                        params.type === "vehicles" ? "Crew" : ""}</h5>
+                            <p className="gender-text">{
+                                        params.type == "people" ? store.info?.properties?.gender :
+                                        params.type == "planets" ? store.info?.properties?.diameter :
+                                        params.type == "vehicles" ? store.info?.properties?.crew : ""}</p>
                         </div>
                         <div className="height-body d-block">
-                            <h5 className="height-title">Height</h5>
-                            <p className="height-text">{store.info?.properties?.height}</p>
+                            <h5 className="height-title">{params.type === "people" ? "Height" :
+                                                        params.type === "planets" ? "Terrain" :
+                                                        params.type === "vehicles" ? "Passengers" : ""}</h5>
+                            <p className="height-text">{
+                                        params.type == "people" ? store.info?.properties?.height :
+                                        params.type == "planets" ? store.info?.properties?.terrain :
+                                        params.type == "vehicles" ? store.info?.properties?.passengers : ""}</p>
                         </div>
                         <div className="skin-body d-block">
-                            <h5 className="skin-title">Skin<br />Color</h5>
-                            <p className="skin-text">{store.info?.properties?.skin_color}</p>
+                            <h5 className="skin-title">{params.type === "people" ? "Skin Color" :
+                                                        params.type === "planets" ? "Gravity" :
+                                                        params.type === "vehicles" ? "Vehicle class" : ""}</h5>
+                            <p className="skin-text">{
+                                        params.type == "people" ? store.info?.properties?.skin_color :
+                                        params.type == "planets" ? store.info?.properties?.gravity :
+                                        params.type == "vehicles" ? store.info?.properties?.vehicle_class : ""}</p>
                         </div>
                         <div className="eye-body d-block">
-                            <h5 className="eye-title">Eye<br />Color</h5>
-                            <p className="eye-text">{store.info?.properties?.eye_color}</p>
+                            <h5 className="eye-title">{params.type === "people" ? "Eye Color" :
+                                                        params.type === "planets" ? "Population" :
+                                                        params.type === "vehicles" ? "Length" : ""}</h5>
+                            <p className="eye-text">{
+                                        params.type == "people" ? store.info?.properties?.eye_color :
+                                        params.type == "planets" ? store.info?.properties?.population :
+                                        params.type == "vehicles" ? store.info?.properties?.length : ""}</p>
                         </div>
 
                     </div>

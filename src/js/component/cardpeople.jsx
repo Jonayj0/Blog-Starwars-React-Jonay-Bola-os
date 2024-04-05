@@ -1,7 +1,6 @@
 import React, { useContext } from "react";
 import { Context } from "../store/appContext.js";
 import { Link } from "react-router-dom";
-import { useParams } from "react-router";
 // import "../../styles/cardpeople.css";
 import { Detalles } from "../views/detalles.js";
 
@@ -9,12 +8,9 @@ import { Detalles } from "../views/detalles.js";
 export const CardPeople = ({ people }) => {
 
   const { store, actions } = useContext(Context)
-  // console.log(people);
-
-  // const params = useParams()
+  
 
   function addFavorites() {
-  // console.log("funciona");
     actions.addFavorite(people.name)
   }
 
