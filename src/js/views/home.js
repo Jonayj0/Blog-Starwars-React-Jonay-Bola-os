@@ -17,11 +17,6 @@ export const Home = () => {
 			actions.getInfo()
 	}, [])
 
-	// console.log(store.peoples);
-	// console.log(store.planets);
-	// console.log(store.vehicles);
-	console.log(store.properties);
-	console.log(store.planets.uid);
 
 	return (
 		<div className="home">

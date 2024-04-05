@@ -51,15 +51,22 @@ const getState = ({ getStore, getActions, setStore }) => {
 					// .then((result) => console.log(result.result))
 					.catch((error) => console.error(error));
 			},
-			// addFavorite: (add) => {
+			addFavorite: (favorito) => {
+				
+					const store = getStore();
+					
+					const newArray= store.favorites.concat(favorito)
+					setStore({ favorites: newArray })
+					
 			//  const add = store.favorites.map((item))
 			//  setStore(favorites)
-		//  },
-			// deleteFavorite: (position) {
-			// 	const arrayfiltered = favorites.filter((item, index) => index !== position)
-			// 	setStore(favorites)
-			// 	putTask(arrayfiltered);
-		//  },
+		 	},
+			deleteFavorite: (name) => {
+				
+				const arrayfiltered = getStore().favorites.filter((item, index) => item !== name)
+				console.log(arrayfiltered);
+				setStore({ favorites: arrayfiltered })
+		 },
 			changeColor: (index, color) => {
 				//get the store
 				const store = getStore();

@@ -23,12 +23,12 @@ export const Navbar = () => {
 							Favorites<span className="badge bg-secondary mx-1">{store.favorites.length}</span>
 						</button>
 						<ul className="dropdown-menu">
-							{store.favorites.map((item) => { return (
-							<li key={item.uid}>{item.name}
+							{store.favorites.map((item, index) => { return (
+							<li key={index}>
 							{/* <Link to={"detalles/"+item.name}> */}
-								<a className="dropdown-item" href="#">{properties.name}</a>
+								<a className="dropdown-item" href="#">{item}</a>
 								{/* </Link> */}
-								{properties.name}<i class="fa-solid fa-trash" onClick={{deleteFavorite}}></i></li>)})}
+								<i className="fa-solid fa-trash" onClick={() => actions.deleteFavorite(item)}></i></li>)})}
 							{/* <li><a className="dropdown-item" href="#">Action</a></li>
 							<li><a className="dropdown-item" href="#">Another action</a></li>
 							<li><a className="dropdown-item" href="#">Something else here</a></li>

@@ -33,7 +33,7 @@ export const Detalles = () => {
         <>
             <div className="jumbotron">
                 <div className="tittle-top d-flex justify-content-evenly">
-                    <img src={/**type == type.planets && planets.uid == 1 ? "https://static.wikia.nocookie.net/esstarwars/images/b/b0/Tatooine_TPM.png/revision/latest?cb=20131214162357" :*/ `https://starwars-visualguide.com/assets/img/${type}/${params.uid}.jpg`} className="img-left" alt="image" />
+                    <img src={type == "planets" && params.uid == "1" ? "https://static.wikia.nocookie.net/esstarwars/images/b/b0/Tatooine_TPM.png/revision/latest?cb=20131214162357" : `https://starwars-visualguide.com/assets/img/${type}/${params.uid}.jpg`} className="img-left" alt="image" />
                     <div className="detalles-personaje d-block justify-content-center text-center">
                         <h1 className="titulo-nombre">{store.info?.properties?.name}</h1>
                         <p className="description">{store.info?.description}</p>
