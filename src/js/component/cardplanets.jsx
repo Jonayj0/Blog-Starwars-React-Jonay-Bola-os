@@ -3,7 +3,7 @@ import { Context } from "../store/appContext.js";
 import { Link } from "react-router-dom";
 
 
-export const CardPlanet = ({ planets }) => {
+export const CardPlanets = ({ planets }) => {
 
   const { store, actions } = useContext(Context)
   // console.log(planets);

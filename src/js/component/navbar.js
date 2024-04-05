@@ -20,17 +20,20 @@ export const Navbar = () => {
 					<!-- Example single danger button --> */}
 					<div className="btn-group me-5">
 						<button type="button" className="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-							Favorites<span className="badge bg-secondary mx-1">4</span>
+							Favorites<span className="badge bg-secondary mx-1">{store.favorites.length}</span>
 						</button>
 						<ul className="dropdown-menu">
-							{/* {store.favorites.map((item) => { return (
-							<li key={item.uid}><Link to={"detalles/"+item.name}>
-								<a className="dropdown-item" href="#">{properties.name}</a></Link>{properties.name}</li>)})} */}
-							<li><a className="dropdown-item" href="#">Action</a></li>
+							{store.favorites.map((item) => { return (
+							<li key={item.uid}>{item.name}
+							{/* <Link to={"detalles/"+item.name}> */}
+								<a className="dropdown-item" href="#">{properties.name}</a>
+								{/* </Link> */}
+								{properties.name}</li>)})}
+							{/* <li><a className="dropdown-item" href="#">Action</a></li>
 							<li><a className="dropdown-item" href="#">Another action</a></li>
 							<li><a className="dropdown-item" href="#">Something else here</a></li>
 							<li><hr className="dropdown-divider" /></li>
-							<li><a className="dropdown-item" href="#">Separated link</a></li>
+							<li><a className="dropdown-item" href="#">Separated link</a></li> */}
 						</ul>
 					</div>
 				{/* </Link> */}

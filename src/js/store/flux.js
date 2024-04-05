@@ -51,11 +51,12 @@ const getState = ({ getStore, getActions, setStore }) => {
 					// .then((result) => console.log(result.result))
 					.catch((error) => console.error(error));
 			},
-			// addFavorite: () => {
-
+			// addFavorite: (add) => {
+			//  const add = store.favorites.map((item))
+			//  setStore(favorites)
 		//  },
 			// deleteFavorite: (position) {
-			// 	const arrayfiltered = tasks.filter((item, index) => index !== position)
+			// 	const arrayfiltered = favorites.filter((item, index) => index !== position)
 			// 	setStore(favorites)
 			// 	putTask(arrayfiltered);
 		//  },

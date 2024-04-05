@@ -3,7 +3,7 @@ import { Context } from "../store/appContext.js";
 import "../../styles/home.css";
 
 import { CardPeople } from "../component/cardpeople.jsx";
-import { CardPlanet } from "../component/cardplanet.jsx";
+import { CardPlanets } from "../component/cardplanets.jsx";
 import { CardVehicles } from "../component/cardvehicles.jsx";
 
 export const Home = () => {
@@ -27,12 +27,12 @@ export const Home = () => {
 		<div className="home">
 			<h2 className="tittles text-danger ms-5">Characters</h2>
 			<div className="cards d-flex mx-4" style={{ overflowX: "scroll" }}>
-				{store.peoples.map((people, index) => {
+				{store.peoples.map((people) => {
 					return (
 						<div className="text m-3" key={people.uid}>
 
 							<CardPeople people={people}
-								// category={people}
+								// type={people}
 								name={people.name}
 
 							/>
@@ -48,8 +48,8 @@ export const Home = () => {
 					return (
 						<div className="text m-3" key={planet.uid}>
 
-							<CardPlanet planets={planet}
-								// category={planet}
+							<CardPlanets planets={planet}
+								// type={planet}
 								name={planet.name}
 
 							/>
@@ -66,7 +66,7 @@ export const Home = () => {
 						<div className="text m-3" key={vehicle.uid}>
 
 							<CardVehicles vehicles={vehicle}
-								// category={vehicle}
+								// type={vehicle}
 								name={vehicle.name}
 
 							/>
