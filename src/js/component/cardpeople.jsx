@@ -11,7 +11,8 @@ export const CardPeople = ({ people }) => {
   
 
   function addFavorites() {
-    actions.addFavorite(people.name)
+    // actions.addFavorite(people.name)
+    actions.favoriteList(people.name)
   }
 
   return (
@@ -25,7 +26,7 @@ export const CardPeople = ({ people }) => {
         <Link to={"/detalles/people/" + people.uid}> 
           <button href="#" className="btn btn-outline-primary me-5">Learn more!</button>
         </Link>
-        <a href="#" className="btn btn-outline-warning ms-5" onClick={addFavorites}><i className="fa-regular fa-heart"></i></a>
+        <a href="#" className="corazon btn btn-outline-warning ms-5" onClick={addFavorites}><i className="fa-regular fa-heart"></i></a>
       </div>
     </div>
   );
