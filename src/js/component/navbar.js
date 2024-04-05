@@ -28,7 +28,7 @@ export const Navbar = () => {
 							{/* <Link to={"detalles/"+item.name}> */}
 								<a className="dropdown-item" href="#">{properties.name}</a>
 								{/* </Link> */}
-								{properties.name}</li>)})}
+								{properties.name}<i class="fa-solid fa-trash" onClick={{deleteFavorite}}></i></li>)})}
 							{/* <li><a className="dropdown-item" href="#">Action</a></li>
 							<li><a className="dropdown-item" href="#">Another action</a></li>
 							<li><a className="dropdown-item" href="#">Something else here</a></li>

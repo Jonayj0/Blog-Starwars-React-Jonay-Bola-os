@@ -46,8 +46,13 @@ export const Detalles = () => {
                             <p className="name-text">{store.info?.properties?.name}</p>
                         </div>
                         <div className="birth-body d-block">
-                            <h5 className="birth-title">Birth<br />Year</h5>
-                            <p className="birth-text">{store.info?.properties?.birth_year}</p>
+                            <h5 className="birth-title">{params.type === "people" ? "Birth year" :
+                                                        params.type === "planets" ? "Climate" :
+                                                        params.type === "vehicles" ? "Crew" : ""}</h5>
+                            <p className="birth-text">{
+                                        params.type == "people" ? store.info?.properties?.birth_year :
+                                        params.type == "planets" ? store.info?.properties?.climate :
+                                        params.type == "vehicles" ? store.info?.properties?.crew : ""}</p>
                         </div>
                         <div className="gender-body d-block">
                             <h5 className="gender-title">Gender</h5>
