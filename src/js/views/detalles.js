@@ -3,7 +3,7 @@ import { Context } from "../store/appContext.js";
 import { useParams } from "react-router";
 import "../../styles/detalles.css";
 import { Link } from "react-router-dom";
-import "../../styles/detalles.css";
+
 
 
 export const Detalles = () => {
@@ -20,9 +20,6 @@ export const Detalles = () => {
 
     useEffect(() => {
         actions.getInfo(params.type, params.uid)
-        // actions.getPeople(),
-        // actions.getPlanets(),
-        // actions.getVehicles()
     }, [])
 
     console.log(store.info);

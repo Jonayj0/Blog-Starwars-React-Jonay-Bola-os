@@ -8,6 +8,8 @@ export const CardPlanets = ({ planets }) => {
   const { store, actions } = useContext(Context)
   // console.log(planets);
 
+  const addHeart = store.favorites.includes(planets.name)
+
   function addFavorites() {
     // actions.addFavorite(planets.name)
     actions.favoriteList(planets.name)
@@ -23,7 +25,7 @@ export const CardPlanets = ({ planets }) => {
         <Link to={"/detalles/planets/" + planets.uid}>
           <button href="#" className="btn btn-outline-primary me-5">Learn more!</button>
         </Link>
-        <a href="#" className="corazon btn btn-outline-warning ms-5" onClick={addFavorites}><i className="fa-regular fa-heart"></i></a>
+        <a href="#" className="corazon btn btn-outline-warning ms-5" onClick={addFavorites}><i className={`fa- regular fa-heart ${addHeart ? "fas" : "far"}`}></i></a>
       </div>
     </div>
   );
