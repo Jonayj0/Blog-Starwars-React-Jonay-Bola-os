@@ -14,7 +14,7 @@ export const Navbar = () => {
 				<span className="navbar-brand mb-0 h1 ms-5"><img className="logostarwars" src="https://1000logos.net/wp-content/uploads/2017/06/Star-Wars-Logo-1.png" alt="" /></span>
 			</Link>
 			<div className="favorites ml-auto">
-				<div className="btn-group me-5">
+				<div className="btn-group me-2">
 					<button type="button" className="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
 						Favorites<span className="badge bg-secondary mx-1">{store.favorites.length}</span>
 					</button>
@@ -30,6 +30,9 @@ export const Navbar = () => {
 
 					</ul>
 				</div>
+				<Link to="/login">
+						<button type="button" className="btn btn-success">Login</button>
+				</Link>
 			</div>
 		</nav>
 	);
