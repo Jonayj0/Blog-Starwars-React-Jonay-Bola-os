@@ -11,15 +11,14 @@ export const Favorites = () => {
 	const { store, actions } = useContext(Context)
 
 	useEffect(() => {
-		actions.getFavorites(),
-		// actions.getInfo(),
-		actions.favoriteList()
+		actions.getFavorites()
 	}, [])
 
 	return (
 		<div className="favorites">
 			<h1 className="tittle-user text-center text-warning bg-secondary">FAVORITOS</h1>
-			<h2 className="tittles text-danger ms-5">Characters</h2>
+			{/* /* HACER UN MAP DE DATA**/}
+			{/* <h2 className="tittles text-danger ms-5">Characters</h2>
 			<div className="cards d-flex mx-4" style={{ overflowX: "scroll" }}>
 				{store.peoples.map((people) => {
 					return (
@@ -68,7 +67,7 @@ export const Favorites = () => {
 						</div>
 					);
 				})}
-			</div>
+			</div> */}
 
 		</div>
 	)

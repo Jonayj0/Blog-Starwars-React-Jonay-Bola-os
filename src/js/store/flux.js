@@ -56,13 +56,13 @@ const getState = ({ getStore, getActions, setStore }) => {
 				if (response.status === 200) {
 					localStorage.setItem("token", data.access_token);
 					console.log(data);
-					return true;
+					return data.results;
 				}else{
 					console.log(data);
-					return false
+					return [];
 				}
 				} catch (error) {
-					return false;
+					return [];
 				}
 
 			},
