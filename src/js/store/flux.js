@@ -43,7 +43,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			getFavorites: async () => {
 				let token = localStorage.getItem("token")
 				try{
-				let response = await fetch("https://animated-space-spork-q7qp9prrrwrph66vx-3000.app.github.dev/login", {
+				let response = await fetch("https://animated-space-spork-q7qp9prrrwrph66vx-3000.app.github.dev/users/favorites", {
 					method: 'GET',
 					headers:{
 						'Content-Type':'application/json',
