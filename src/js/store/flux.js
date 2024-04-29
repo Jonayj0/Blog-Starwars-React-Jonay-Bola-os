@@ -56,13 +56,41 @@ const getState = ({ getStore, getActions, setStore }) => {
 				if (response.status === 200) {
 					localStorage.setItem("token", data.access_token);
 					console.log(data);
-					return data.results;
+					setStore({favorites:data.result})
 				}else{
 					console.log(data);
 					return [];
 				}
 				} catch (error) {
 					return [];
+				}
+
+			},
+			favoritesCharacters: async (name, age, heigh) => {
+				try{
+				let response = await fetch(`https://animated-space-spork-q7qp9prrrwrph66vx-3000.app.github.dev/favorite/people/${uid}`, {
+					method: 'POST',
+					headers:{
+						'Content-Type':'application/json'
+					},
+					body: JSON.stringify({
+						name:name,
+						age:age,
+						heigh:heigh
+					})
+				})
+
+				let data = await response.json()
+				if (response.status === 200) {
+					localStorage.setItem("token", data.access_token);
+					console.log(data);
+					return true;
+				}else{
+					console.log(data);
+					return false
+				}
+				} catch (error) {
+					return false;
 				}
 
 			},

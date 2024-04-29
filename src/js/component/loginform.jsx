@@ -44,9 +44,9 @@ export const LoginForm = () => {
                 <button type="submit" className="save btn btn-primary">save</button>
 
             </form>
-            <Link to="/">
+            {/* <Link to="/">
                 <span className="mb-0 h5">or get back to home</span>
-            </Link>
+            </Link> */}
         </div>
     );
 };
