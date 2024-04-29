@@ -21,7 +21,8 @@ export const LoginForm = () => {
         console.log();
         const isLogged = await actions.login(email, password, name)
         if (isLogged) {
-            navigate("/favorites");
+            actions.getFavorites()
+            navigate("/");
         }
     }
 
@@ -41,7 +42,7 @@ export const LoginForm = () => {
                     <label htmlFor="exampleInputName" className="form-label">Name</label>
                     <input type="text" className="form-control" id="exampleInputName" aria-describedby="nameHelp" placeholder="Full name" onChange={(event) => { setName(event.target.value) }} />
                 </div>
-                <button type="submit" className="save btn btn-primary">save</button>
+                <button type="submit" className="save btn btn-primary">Login</button>
 
             </form>
             {/* <Link to="/">
