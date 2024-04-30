@@ -25,14 +25,14 @@ export const Navbar = () => {
 						<ul className="dropdown-menu">
 							{store.favorites.length === 0 ?
 								<li className="text-center">(empty)</li>
-								: store.favorites.map((item, index) => {
+								: store.favorites.map((item, indexType) => {
 									console.log(item);
 									return (
-										item.map((elemento, index) => {
-											console.log(elemento);
+										item.map((element, index) => {
+											console.log(element);
 											return (
 												<li key={index}>
-													<a className="dropdown-item text-center" href="#">{elemento.characters_id || elemento.planets_id || elemento.vehicles_id} <i className="fa-solid fa-trash" onClick={() => actions.deleteFavorite(item)}></i></a>
+													<a className="dropdown-item text-center" href="#">{element.characters_id || element.planets_id || element.vehicles_id} <i className="fa-solid fa-trash" onClick={() => actions.deleteFavorite(item.uid)}></i></a>
 												</li>)
 										})
 									)
