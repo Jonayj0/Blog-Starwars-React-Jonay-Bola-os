@@ -16,7 +16,7 @@ export const CardPeople = ({ people }) => {
     // actions.addFavorite(people.name)
     // actions.favoriteList(people.name)
     console.log(people.uid);
-    actions.favoritesCharacters(people.name, people.uid)
+    actions.addFavoritesCharacters(people.name, people.uid)
   }
   
   return (
@@ -30,8 +30,9 @@ export const CardPeople = ({ people }) => {
         <Link to={"/detalles/people/" + people.uid}>
           <button href="#" className="btn btn-outline-primary me-5">Learn more!</button>
         </Link>
-        {token ? <a href="#" className="btn btn-outline-warning ms-5" onClick={addFavorites}><i className={`fa- regular fa-heart ${addHeart ? "fas" : "far"}`}></i></a> 
-        : false }
+        {token ? 
+        <a href="#" className="btn btn-outline-warning ms-5" onClick={addFavorites}><i className={`fa-regular fa-heart ${addHeart ? "fas text-warning" : "far"}`}></i></a> 
+        : null }
         {/* <a href="#" className="btn btn-outline-warning ms-5" onClick={addFavorites}><i className={`fa- regular fa-heart ${addHeart ? "fas" : "far"}`}></i></a> */}
       </div>
     </div>

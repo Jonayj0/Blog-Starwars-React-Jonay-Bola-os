@@ -12,10 +12,12 @@ export const Home = () => {
 
 	useEffect(() => {
 		actions.getPeople(),
-			actions.getPlanets(),
-			actions.getVehicles(),
-			actions.getInfo()
+		actions.getPlanets(),
+		actions.getVehicles(),
+		actions.getInfo(),
+		actions.getFavorites()
 	}, [])
+
 
 
 	return (

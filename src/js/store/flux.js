@@ -68,7 +68,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				}
 
 			},
-			favoritesCharacters: async (name, uid) => {
+			addFavoritesCharacters: async (name, uid) => {
 				let token = localStorage.getItem("token")
 				try{
 				let response = await fetch(`https://animated-space-spork-q7qp9prrrwrph66vx-3000.app.github.dev/favorite/people/${uid}`, {
