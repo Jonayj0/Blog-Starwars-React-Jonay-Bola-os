@@ -1,15 +1,38 @@
 import React, { useContext } from "react";
 import { Context } from "../store/appContext.js";
+import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import "../../styles/navbar.css";
 
 export const Navbar = () => {
 
 	const { store, actions } = useContext(Context)
+	const navigate = useNavigate()
 
+	function logout () {
+		actions.logout();
+		navigate("/");
+		window.location.reload();
+	}
+	
 	let token = localStorage.getItem("token")
 
 	console.log(store.favorites);
+
+	// const params = useParams()
+    // console.log(params);
+
+    // const type = params.type === "people" ? "characters" || "characters_name" :
+    //                  params.type === "planets" ? "planets" || "planets_name":
+    //                  params.type === "vehicles" ? "vehicles" || "vehicles_name": "";
+
+
+    // useEffect(() => {
+    //     actions.getInfo(params.type, params.uid)
+    // }, [])
+
+    console.log(store.info);
 
 	return (
 		<nav className="navbar navbar-light bg-light mb-3 py-4">
@@ -32,19 +55,18 @@ export const Navbar = () => {
 											console.log(element);
 											return (
 												<li key={index}>
-													<a className="dropdown-item text-center" href="#">{element.characters_id || element.planets_id || element.vehicles_id} <i className="fa-solid fa-trash" onClick={() => actions.deleteFavorite(item.uid)}></i></a>
+													<a className="dropdown-item text-center" href="#">{element.characters_name || element.planets_name || element.vehicles_name} <i className="fa-solid fa-trash" onClick={() => actions.deleteFavorite(item.uid)}></i></a>
 												</li>)
 										})
 									)
 								})}
 
 						</ul>
+						<button type="button" className="btn btn-success ms-2 rounded" onClick={logout}>Logout</button>
 					</div>
 					: <Link to="/login">
 						<button type="button" className="btn btn-success">Login</button>
 					</Link>}
-
-
 			</div>
 		</nav>
 	);
