@@ -16,7 +16,7 @@ export const CardPeople = ({ people }) => {
     console.log(people.uid);
     const isFavorite = store.favorites.includes(people.name)
     if (isFavorite) {
-      actions.deleteFavorite(people.name)
+      actions.deleteFavoritesCharacters(people.name)
     }else {
       actions.addFavoritesCharacters(people.name, people.uid)
     }

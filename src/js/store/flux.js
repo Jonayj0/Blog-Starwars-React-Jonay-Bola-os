@@ -98,6 +98,34 @@ const getState = ({ getStore, getActions, setStore }) => {
 				}
 
 			},
+			deleteFavoritesCharacters: async (name) => {
+				let token = localStorage.getItem("token")
+				try{
+				let response = await fetch(`https://ominous-succotash-4j7wgw444x6gc7464-3000.app.github.dev/favorite/people/${uid}`, {
+					method: 'DELETE',
+					headers:{
+						'Content-Type':'application/json',
+						'Authorization': "Bearer "+token
+					},
+					body: JSON.stringify({
+						name:name,
+						uid:uid
+					})
+				})
+
+				let data = await response.json()
+				if (response.status === 200) {
+					console.log(data);
+					getStore().favorites[0].filter((item, index) => item !== name)
+				}else{
+					console.log(data);
+					return false
+				}
+				} catch (error) {
+					return false;
+				}
+
+			},
 			getPeople: () => {
 				fetch("https://www.swapi.tech/api/people/", {
 					method: 'GET'
@@ -144,6 +172,34 @@ const getState = ({ getStore, getActions, setStore }) => {
 					.catch(err => console.error(err))
 
 			},
+			// addFavoritesVehicles: async (name, uid) => {
+			// 	let token = localStorage.getItem("token")
+			// 	try{
+			// 	let response = await fetch(`https://ominous-succotash-4j7wgw444x6gc7464-3000.app.github.dev/favorite/vehicle/${uid}`, {
+			// 		method: 'POST',
+			// 		headers:{
+			// 			'Content-Type':'application/json',
+			// 			'Authorization': "Bearer "+token
+			// 		},
+			// 		body: JSON.stringify({
+			// 			name:name,
+			// 			uid:uid
+			// 		})
+			// 	})
+
+			// 	let data = await response.json()
+			// 	if (response.status === 200) {
+			// 		console.log(data);
+			// 		getActions().getFavorites()
+			// 	}else{
+			// 		console.log(data);
+			// 		return false
+			// 	}
+			// 	} catch (error) {
+			// 		return false;
+			// 	}
+
+			// },
 			getVehicles: () => {
 				fetch("https://www.swapi.tech/api/vehicles/", {
 					method: 'GET'

@@ -14,7 +14,7 @@ export const CardVehicles = ({ vehicles }) => {
 
   function addFavorites() {
     // actions.addFavorite(vehicles.name)
-    actions.favoriteList(vehicles.name)
+    // actions.addFavoritesVehicles(vehicles.name, vehicles.uid)
   }
 
   return (
