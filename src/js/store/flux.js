@@ -14,7 +14,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			},
 			login: async (email, password, name) => {
 				try{
-				let response = await fetch("https://animated-space-spork-q7qp9prrrwrph66vx-3000.app.github.dev/login", {
+				let response = await fetch("https://ominous-succotash-4j7wgw444x6gc7464-3000.app.github.dev/login", {
 					method: 'POST',
 					headers:{
 						'Content-Type':'application/json'
@@ -46,7 +46,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			getFavorites: async () => {
 				let token = localStorage.getItem("token")
 				try{
-					let response = await fetch("https://animated-space-spork-q7qp9prrrwrph66vx-3000.app.github.dev/users/favorites", {
+					let response = await fetch("https://ominous-succotash-4j7wgw444x6gc7464-3000.app.github.dev/users/favorites", {
 						method: 'GET',
 						headers:{
 							'Content-Type':'application/json',
@@ -71,7 +71,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			addFavoritesCharacters: async (name, uid) => {
 				let token = localStorage.getItem("token")
 				try{
-				let response = await fetch(`https://animated-space-spork-q7qp9prrrwrph66vx-3000.app.github.dev/favorite/people/${uid}`, {
+				let response = await fetch(`https://ominous-succotash-4j7wgw444x6gc7464-3000.app.github.dev/favorite/people/${uid}`, {
 					method: 'POST',
 					headers:{
 						'Content-Type':'application/json',
@@ -105,6 +105,34 @@ const getState = ({ getStore, getActions, setStore }) => {
 					.then(res => res.json())
 					.then(data => setStore({ peoples: data.results }))
 					.catch(err => console.error(err))
+
+			},
+			addFavoritesPlanets: async (name, uid) => {
+				let token = localStorage.getItem("token")
+				try{
+				let response = await fetch(`https://ominous-succotash-4j7wgw444x6gc7464-3000.app.github.dev/favorite/planet/${uid}`, {
+					method: 'POST',
+					headers:{
+						'Content-Type':'application/json',
+						'Authorization': "Bearer "+token
+					},
+					body: JSON.stringify({
+						name:name,
+						uid:uid
+					})
+				})
+
+				let data = await response.json()
+				if (response.status === 200) {
+					console.log(data);
+					getActions().getFavorites()
+				}else{
+					console.log(data);
+					return false
+				}
+				} catch (error) {
+					return false;
+				}
 
 			},
 			getPlanets: () => {

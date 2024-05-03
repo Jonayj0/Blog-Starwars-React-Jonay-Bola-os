@@ -14,7 +14,7 @@ export const CardPlanets = ({ planets }) => {
 
   function addFavorites() {
     // actions.addFavorite(planets.name)
-    actions.favoriteList(planets.name)
+    actions.addFavoritesPlanets(planets.name, planets.uid)
   }
 
   return (
@@ -28,7 +28,7 @@ export const CardPlanets = ({ planets }) => {
           <button href="#" className="btn btn-outline-primary me-5">Learn more!</button>
         </Link>
         {token ? <a href="#" className="btn btn-outline-warning ms-5" onClick={addFavorites}><i className={`fa- regular fa-heart ${addHeart ? "fas" : "far"}`}></i></a> 
-        : false }
+        : null }
       </div>
     </div>
   );

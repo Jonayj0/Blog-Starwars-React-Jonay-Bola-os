@@ -13,10 +13,13 @@ export const CardPeople = ({ people }) => {
   const addHeart = store.favorites.includes(people.name)
 
   function addFavorites() {
-    // actions.addFavorite(people.name)
-    // actions.favoriteList(people.name)
     console.log(people.uid);
-    actions.addFavoritesCharacters(people.name, people.uid)
+    const isFavorite = store.favorites.includes(people.name)
+    if (isFavorite) {
+      actions.deleteFavorite(people.name)
+    }else {
+      actions.addFavoritesCharacters(people.name, people.uid)
+    }
   }
   
   return (
@@ -31,7 +34,7 @@ export const CardPeople = ({ people }) => {
           <button href="#" className="btn btn-outline-primary me-5">Learn more!</button>
         </Link>
         {token ? 
-        <a href="#" className="btn btn-outline-warning ms-5" onClick={addFavorites}><i className={`fa-regular fa-heart ${addHeart ? "fas text-warning" : "far"}`}></i></a> 
+        <a href="#" className="btn btn-outline-warning ms-5" onClick={addFavorites}><i className={`fa-regular fa-heart ${addHeart ? "fas" : "far"}`}></i></a> 
         : null }
         {/* <a href="#" className="btn btn-outline-warning ms-5" onClick={addFavorites}><i className={`fa- regular fa-heart ${addHeart ? "fas" : "far"}`}></i></a> */}
       </div>
