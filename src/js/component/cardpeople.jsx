@@ -13,13 +13,17 @@ export const CardPeople = ({ people }) => {
   const addHeart = store.favorites.includes(people.name)
 
   function addFavorites() {
-    console.log(people.uid);
-    const isFavorite = store.favorites.includes(people.name)
-    if (isFavorite) {
-      actions.deleteFavoritesCharacters(people.name)
-    }else {
+    // console.log(people.uid);
+    // const isFavorite = store.favorites[0].includes(people.name)
+    // if (isFavorite) {
+    //   actions.deleteFavoritesCharacters(people.uid)
+    //   console.log(actions.deleteFavoritesCharacters(people.name));
+    // }else {
       actions.addFavoritesCharacters(people.name, people.uid)
-    }
+    // }
+  }
+  function deleteFavorites() {
+    actions.deleteFavoritesCharacters(people.uid)
   }
   
   return (

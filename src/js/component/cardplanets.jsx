@@ -16,6 +16,10 @@ export const CardPlanets = ({ planets }) => {
     // actions.addFavorite(planets.name)
     actions.addFavoritesPlanets(planets.name, planets.uid)
   }
+  
+  function deleteFavorites() {
+    actions.deleteFavoritesPlanets(planets.uid)
+  }
 
   return (
     <div className="card" style={{ width: "18rem" }}>
