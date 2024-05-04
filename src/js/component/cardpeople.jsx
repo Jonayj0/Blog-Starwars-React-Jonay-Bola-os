@@ -10,22 +10,28 @@ export const CardPeople = ({ people }) => {
 
   let token = localStorage.getItem("token")
 
+  let peopleFavorite = store.favorites[0]
   const addHeart = store.favorites.includes(people.name)
+  const isFavorite = store.favorites.includes(people.name, people.uid)
 
   function addFavorites() {
     // console.log(people.uid);
-    // const isFavorite = store.favorites[0].includes(people.name)
-    // if (isFavorite) {
-    //   actions.deleteFavoritesCharacters(people.uid)
-    //   console.log(actions.deleteFavoritesCharacters(people.name));
-    // }else {
+    let peopleFavorite = store.favorites[0]
+    const isFavorite = peopleFavorite.includes(people.name, people.uid)
+    if (isFavorite) {
+      actions.deleteFavoritesCharacters(people.name, people.uid)
+    }else {
       actions.addFavoritesCharacters(people.name, people.uid)
-    // }
+      console.log(peopleFavorite);
+      // window.location.reload();
+    }
   }
   function deleteFavorites() {
-    actions.deleteFavoritesCharacters(people.uid)
+    actions.deleteFavoritesCharacters(people.name, people.uid)
   }
   
+  console.log(store.favorites[0]);
+
   return (
     <div className="card" style={{ width: "18rem" }}>
       <img src={`https://starwars-visualguide.com/assets/img/characters/${people.uid}.jpg`} className="card-img-top" alt="..." />
@@ -40,6 +46,7 @@ export const CardPeople = ({ people }) => {
         {token ? 
         <a href="#" className="btn btn-outline-warning ms-5" onClick={addFavorites}><i className={`fa-regular fa-heart ${addHeart ? "fas" : "far"}`}></i></a> 
         : null }
+        {token ? <i className="fa-solid fa-trash d-flex justify-content-end mt-2 mx-3" onClick={deleteFavorites}></i> : null}
         {/* <a href="#" className="btn btn-outline-warning ms-5" onClick={addFavorites}><i className={`fa- regular fa-heart ${addHeart ? "fas" : "far"}`}></i></a> */}
       </div>
     </div>

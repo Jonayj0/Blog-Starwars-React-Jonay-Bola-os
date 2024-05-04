@@ -98,7 +98,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				}
 
 			},
-			deleteFavoritesCharacters: async (uid) => {
+			deleteFavoritesCharacters: async (name, uid) => {
 				let token = localStorage.getItem("token")
 				try{
 				let response = await fetch(`https://ominous-succotash-4j7wgw444x6gc7464-3000.app.github.dev/favorite/people/${uid}`, {
@@ -107,13 +107,17 @@ const getState = ({ getStore, getActions, setStore }) => {
 						'Content-Type':'application/json',
 						'Authorization': "Bearer "+token
 					},
+					body: JSON.stringify({
+						name:name,
+						uid:uid
+					})
 				})
 
 				let data = await response.json()
 				if (response.status === 200) {
 					console.log(data);
 					let listFav = getStore().favorites[0]
-					const newListFav = listFav.filter((character) => character.uid !== uid)
+					const newListFav = listFav.filter((character) => character.name !== name && character.uid !== uid)
 					setStore({
 						favorites: [
 							newListFav
@@ -301,55 +305,65 @@ const getState = ({ getStore, getActions, setStore }) => {
 						getActions().addFavorite(name)
 					}
 				}
-		 	}
-		}
-		// removeFav: async (type, uid) => {
-		// 	const token = localStorage.getItem("token")
-		// 	try {
-		// 		const response = await fetch(`https://ominous-succotash-4j7wgw444x6gc7464-3000.app.github.dev/favorite/${type}/${uid}`, {
-		// 			method: 'DELETE',
-		// 			headers:{
-		// 				'Content-Type':'application/json',
-		// 				'Authorization': "Bearer " + token
-		// 			},
-		// 		});
-		// 		if (response.status === 200) {
-		// 			if (type === "people") {
-		// 				let listFav = getStore().favorites[0];
-		// 				const newListFav = listFav.filter((character) => character.uid !== uid);
-		// 				setStore({
-		// 					favorites: [
-		// 						newListFav,
-		// 						getStore().favorites[1],
-		// 						getStore().favorites[2]
-		// 					]
-		// 				})
-		// 			} else if (type === "planets") {
-		// 				let listFav = getStore().favorites[1];
-		// 				const newListFav = listFav.filter((planet) => planet.uid !== uid);
-		// 				setStore({
-		// 					favorites: [
-		// 						getStore().favorites[0],
-		// 						newListFav,
-		// 						getStore().favorites[2]
-		// 					]
-		// 				})
-		// 			} else {
-		// 				let listFav = getStore().favorites[2];
-		// 				const newListFav = listFav.filter((vehicle) => vehicle.uid !== uid);
-		// 				setStore({
-		// 					favorites: [
-		// 						getStore().favorites[0],
-		// 						getStore().favorites[1],
-		// 						newListFav
-		// 					]
-		// 				})
-		// 			}
-		// 		}
-		// 	} catch (error) {
-		// 		return []; 
-		// 	} 
-		// }
+		 	},
+			removeFav: async (type, uid) => {
+				const token = localStorage.getItem("token")
+				try {
+					const response = await fetch(`https://ominous-succotash-4j7wgw444x6gc7464-3000.app.github.dev/favorite/${type}/${uid}`, {
+						method: 'DELETE',
+						headers:{
+							'Content-Type':'application/json',
+							'Authorization': "Bearer " + token
+						},
+					});
+					if (response.status === 200) {
+						if (type === "people") {
+							let listFav = getStore().favorites[0];
+							const newListFav = listFav.filter((character) => character.uid !== uid);
+							setStore({
+								favorites: [
+									newListFav,
+									getStore().favorites[1],
+									getStore().favorites[2]
+								]
+							})
+						} else if (type === "planets") {
+							let listFav = getStore().favorites[1];
+							const newListFav = listFav.filter((planet) => planet.uid !== uid);
+							setStore({
+								favorites: [
+									getStore().favorites[0],
+									newListFav,
+									getStore().favorites[2]
+								]
+							})
+						} else {
+							let listFav = getStore().favorites[2];
+							const newListFav = listFav.filter((vehicle) => vehicle.uid !== uid);
+							setStore({
+								favorites: [
+									getStore().favorites[0],
+									getStore().favorites[1],
+									newListFav
+								]
+							})
+						}
+					}
+				} catch (error) {
+					return []; 
+				} 
+			}
+			// addOrRemovePeople: (name, uid) => {
+			// 	// console.log(people.uid);
+			// 	const peopleFavorite = getStore().favorites[0]
+			// 	const isFavorite = peopleFavorite.includes(name)
+			// 	if (isFavorite) {
+			// 	  	getActions().deleteFavoritesCharacters(name)
+			// 	}else {
+			// 		getActions().addFavoritesCharacters(name, uid)
+			// 	}
+			//   }
+		},
 	};
 };
 

@@ -10,29 +10,29 @@ export const Navbar = () => {
 	const { store, actions } = useContext(Context)
 	const navigate = useNavigate()
 
-	function logout () {
+	function logout() {
 		actions.logout();
 		navigate("/");
 		window.location.reload();
 	}
-	
+
 	let token = localStorage.getItem("token")
 
 	console.log(store.favorites);
 
 	// const params = useParams()
-    // console.log(params);
+	// console.log(params);
 
-    // const type = params.type === "people" ? "characters" || "characters_name" :
-    //                  params.type === "planets" ? "planets" || "planets_name":
-    //                  params.type === "vehicles" ? "vehicles" || "vehicles_name": "";
+	// const type = params.type === "people" ? "characters" || "characters_name" :
+	//                  params.type === "planets" ? "planets" || "planets_name":
+	//                  params.type === "vehicles" ? "vehicles" || "vehicles_name": "";
 
 
-    // useEffect(() => {
-    //     actions.getInfo(params.type, params.uid)
-    // }, [])
+	// useEffect(() => {
+	//     actions.getInfo(params.type, params.uid)
+	// }, [])
 
-	const removeFavorite = (indexType, uid) => {
+	function removeFavorite(indexType, uid) {
 		let type;
 		if (indexType === 0) {
 			type = "people";
@@ -44,7 +44,7 @@ export const Navbar = () => {
 		actions.removeFav(type, uid);
 	};
 
-    console.log(store.info);
+	console.log(store.info);
 
 	return (
 		<nav className="navbar navbar-light bg-light mb-3 py-4">
@@ -60,14 +60,18 @@ export const Navbar = () => {
 						<ul className="dropdown-menu">
 							{store.favorites.length === 0 ?
 								<li className="text-center">(empty)</li>
-								: store.favorites.map((item, indexType) => {
-									console.log(item);
+								: store.favorites.map((elem, indexType) => {
+									console.log(elem);
 									return (
-										item.map((element, index) => {
-											console.log(element);
+										elem.map((item, index) => {
+											console.log(item);
 											return (
 												<li key={index}>
-													<a className="dropdown-item text-center" href="#">{element.characters_name || element.planets_name || element.vehicles_name} <i className="fa-solid fa-trash" onClick={() => removeFavorite(indexType, element.uid)}></i></a>
+													<a className="dropdown-item text-center" href="#">
+														{item.name}
+														<i className="fa-solid fa-trash" onClick={() => removeFavorite(indexType, item.uid)}>
+														</i>
+													</a>
 												</li>)
 										})
 									)
