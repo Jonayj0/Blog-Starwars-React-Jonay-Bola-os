@@ -10,27 +10,25 @@ export const CardPeople = ({ people }) => {
 
   let token = localStorage.getItem("token")
 
-  let peopleFavorite = store.favorites[0]
+  // let peopleFavorite = store.favorites[0]
   const addHeart = store.favorites.includes(people.name)
-  const isFavorite = store.favorites.includes(people.name, people.uid)
+  // const isFavorite = store.favorites.includes(people.name, people.uid)
 
-  function addFavorites() {
-    // console.log(people.uid);
+  function addOrDelFavorites(name) {
     let peopleFavorite = store.favorites[0]
-    const isFavorite = peopleFavorite.includes(people.name, people.uid)
+    const isFavorite = peopleFavorite.filter(el => el.name == name)[0]
     if (isFavorite) {
-      actions.deleteFavoritesCharacters(people.name, people.uid)
+      actions.deleteFavoritesCharacters(people.uid)
     }else {
       actions.addFavoritesCharacters(people.name, people.uid)
       console.log(peopleFavorite);
-      // window.location.reload();
     }
   }
-  function deleteFavorites() {
-    actions.deleteFavoritesCharacters(people.name, people.uid)
-  }
+  // function deleteFavorites() {
+  //   actions.deleteFavoritesCharacters(people.name, people.uid)
+  // }
   
-  console.log(store.favorites[0]);
+  // console.log(store.favorites[0]);
 
   return (
     <div className="card" style={{ width: "18rem" }}>
@@ -44,9 +42,9 @@ export const CardPeople = ({ people }) => {
           <button href="#" className="btn btn-outline-primary me-5">Learn more!</button>
         </Link>
         {token ? 
-        <a href="#" className="btn btn-outline-warning ms-5" onClick={addFavorites}><i className={`fa-regular fa-heart ${addHeart ? "fas" : "far"}`}></i></a> 
+        <a href="#" className="btn btn-outline-warning ms-5" onClick={e => addOrDelFavorites(people.name)}><i className={`fa-regular fa-heart ${addHeart ? "fas" : "far"}`}></i></a> 
         : null }
-        {token ? <i className="fa-solid fa-trash d-flex justify-content-end mt-2 mx-3" onClick={deleteFavorites}></i> : null}
+        {/* {token ? <i className="fa-solid fa-trash d-flex justify-content-end mt-2 mx-3" onClick={deleteFavorites}></i> : null} */}
         {/* <a href="#" className="btn btn-outline-warning ms-5" onClick={addFavorites}><i className={`fa- regular fa-heart ${addHeart ? "fas" : "far"}`}></i></a> */}
       </div>
     </div>

@@ -11,15 +11,20 @@ export const CardPlanets = ({ planets }) => {
   const addHeart = store.favorites.includes(planets.name)
 
   let token = localStorage.getItem("token")
-
-  function addFavorites() {
-    // actions.addFavorite(planets.name)
-    actions.addFavoritesPlanets(planets.name, planets.uid)
-  }
   
-  function deleteFavorites() {
-    actions.deleteFavoritesPlanets(planets.uid)
+  function addFavorites(name) {
+    let planetFavorite = store.favorites[1]
+    const isFavorite = planetFavorite.filter(el => el.name == name)[1]
+    if (isFavorite) {
+      actions.deleteFavoritesPlanets(planets.uid)
+    }else {
+      actions.addFavoritesPlanets(planets.name, planets.uid)
+      console.log(planetFavorite);
+    }
   }
+  // function deleteFavorites() {
+  //   actions.deleteFavoritesPlanets(planets.uid)
+  // }
 
   return (
     <div className="card" style={{ width: "18rem" }}>
@@ -31,7 +36,7 @@ export const CardPlanets = ({ planets }) => {
         <Link to={"/detalles/planets/" + planets.uid}>
           <button href="#" className="btn btn-outline-primary me-5">Learn more!</button>
         </Link>
-        {token ? <a href="#" className="btn btn-outline-warning ms-5" onClick={addFavorites}><i className={`fa- regular fa-heart ${addHeart ? "fas" : "far"}`}></i></a> 
+        {token ? <a href="#" className="btn btn-outline-warning ms-5" onClick={e => addFavorites(planets.name)}><i className={`fa- regular fa-heart ${addHeart ? "fas" : "far"}`}></i></a> 
         : null }
       </div>
     </div>

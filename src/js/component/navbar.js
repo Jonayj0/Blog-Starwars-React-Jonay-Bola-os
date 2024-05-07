@@ -32,7 +32,7 @@ export const Navbar = () => {
 	//     actions.getInfo(params.type, params.uid)
 	// }, [])
 
-	function removeFavorite(indexType, uid) {
+	function removeFavorite(indexType, id) {
 		let type;
 		if (indexType === 0) {
 			type = "people";
@@ -41,7 +41,7 @@ export const Navbar = () => {
 		} else {
 			type = "vehicles";
 		}
-		actions.removeFav(type, uid);
+		actions.removeFav(type, id);
 	};
 
 	console.log(store.info);
@@ -69,7 +69,7 @@ export const Navbar = () => {
 												<li key={index}>
 													<a className="dropdown-item text-center" href="#">
 														{item.name}
-														<i className="fa-solid fa-trash" onClick={() => removeFavorite(indexType, item.uid)}>
+														<i className="fa-solid fa-trash" onClick={() => removeFavorite(indexType, item.id)}>
 														</i>
 													</a>
 												</li>)

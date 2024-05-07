@@ -86,8 +86,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 				let data = await response.json()
 				if (response.status === 200) {
 					console.log(data);
-					// const newArray= getActions().favorites.concat(name)
-					// setStore({ favorites: newArray })
 					getActions().getFavorites()
 				}else{
 					console.log(data);
@@ -98,31 +96,28 @@ const getState = ({ getStore, getActions, setStore }) => {
 				}
 
 			},
-			deleteFavoritesCharacters: async (name, uid) => {
+			deleteFavoritesCharacters: async (id) => {
 				let token = localStorage.getItem("token")
 				try{
-				let response = await fetch(`https://ominous-succotash-4j7wgw444x6gc7464-3000.app.github.dev/favorite/people/${uid}`, {
+				let response = await fetch(`https://ominous-succotash-4j7wgw444x6gc7464-3000.app.github.dev/favorite/people/${id}`, {
 					method: 'DELETE',
 					headers:{
 						'Content-Type':'application/json',
 						'Authorization': "Bearer "+token
 					},
-					body: JSON.stringify({
-						name:name,
-						uid:uid
-					})
 				})
 
 				let data = await response.json()
 				if (response.status === 200) {
 					console.log(data);
-					let listFav = getStore().favorites[0]
-					const newListFav = listFav.filter((character) => character.name !== name && character.uid !== uid)
-					setStore({
-						favorites: [
-							newListFav
-						]
-					})
+					await getActions().getFavorites()
+					// let listFav = getStore().favorites[0]
+					// const newListFav = listFav.filter((character) => character.id !== id)
+					// setStore({
+					// 	favorites: [
+					// 		newListFav
+					// 	]
+					// })
 				}else{
 					console.log(data);
 					return false
@@ -159,7 +154,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				let data = await response.json()
 				if (response.status === 200) {
 					console.log(data);
-					getActions().getFavorites()
+					await getActions().getFavorites()
 				}else{
 					console.log(data);
 					return false
@@ -169,10 +164,10 @@ const getState = ({ getStore, getActions, setStore }) => {
 				}
 
 			},
-			deleteFavoritesPlanets: async (uid) => {
+			deleteFavoritesPlanets: async (id) => {
 				let token = localStorage.getItem("token")
 				try{
-				let response = await fetch(`https://ominous-succotash-4j7wgw444x6gc7464-3000.app.github.dev/favorite/planet/${uid}`, {
+				let response = await fetch(`https://ominous-succotash-4j7wgw444x6gc7464-3000.app.github.dev/favorite/planet/${id}`, {
 					method: 'DELETE',
 					headers:{
 						'Content-Type':'application/json',
@@ -183,13 +178,14 @@ const getState = ({ getStore, getActions, setStore }) => {
 				let data = await response.json()
 				if (response.status === 200) {
 					console.log(data);
-					let listFav = getStore().favorites[0]
-					const newListFav = listFav.filter((planet) => planet.uid !== uid)
-					setStore({
-						favorites: [
-							newListFav
-						]
-					})
+					await getActions().getFavorites()
+					// let listFav = getStore().favorites[0]
+					// const newListFav = listFav.filter((planet) => planet.uid !== uid)
+					// setStore({
+					// 	favorites: [
+					// 		newListFav
+					// 	]
+					// })
 				}else{
 					console.log(data);
 					return false
@@ -208,62 +204,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 					.catch(err => console.error(err))
 
 			},
-		// 	addFavorites: async (type, uid) => {
-		// 		let token = localStorage.getItem("token")
-		// 		try{
-		// 		let response = await fetch(`https://ominous-succotash-4j7wgw444x6gc7464-3000.app.github.dev/favorite/${type}/${uid}`, {
-		// 			method: 'POST',
-		// 			headers:{
-		// 				'Content-Type':'application/json',
-		// 				'Authorization': "Bearer "+token
-		// 			},
-		// 		})
-
-		// 		if (response.status === 201) {
-		// 			if (type === "people") {
-		// 				let listFav = getStore().favorites[0];
-		// 				const allCharacters = getStore().peoples;
-		// 				const newFav = allCharacters.filter((character) => character.uid === uid);
-		// 				const newListFav = listFav.concat(newFav) ;
-		// 				setStore({
-		// 					favorites: [
-		// 						newListFav,
-		// 						getStore().favorites[1],
-		// 						getStore().favorites[2]
-		// 					]
-		// 				})
-		// 			} else if (category === "planets") {
-		// 				let listFav = getStore().favorites[1];
-		// 				const allPlanets = getStore().planets;
-		// 				const newFav = allPlanets.filter((planet) => planet.uid === uid);
-		// 				const newListFav = listFav.concat(newFav) ;
-		// 				setStore({
-		// 					favorites: [
-		// 						getStore().favorites[0],
-		// 						newListFav,
-		// 						getStore().favorites[2]
-		// 					]
-		// 				})
-		// 			} else {
-		// 				let listFav = getStore().favorites[2];
-		// 				const allVehicles = getStore().vehicles;
-		// 				const newFav = allVehicles.filter((vehicle) => vehicle.uid === uid);
-		// 				const newListFav = listFav.concat(newFav) ;
-		// 				setStore({
-		// 					favorites: [
-		// 						getStore().favorites[0],
-		// 						getStore().favorites[1],
-		// 						newListFav
-		// 					]
-		// 				})
-		// 			}
-		// 		} else {
-		// 			return [];
-		// 		}
-		// 	} catch (error) {
-		// 		return []; 
-		// 	} 
-		// },
 			getVehicles: () => {
 				fetch("https://www.swapi.tech/api/vehicles/", {
 					method: 'GET'
@@ -306,10 +246,10 @@ const getState = ({ getStore, getActions, setStore }) => {
 					}
 				}
 		 	},
-			removeFav: async (type, uid) => {
+			removeFav: async (type, id) => {
 				const token = localStorage.getItem("token")
 				try {
-					const response = await fetch(`https://ominous-succotash-4j7wgw444x6gc7464-3000.app.github.dev/favorite/${type}/${uid}`, {
+					const response = await fetch(`https://ominous-succotash-4j7wgw444x6gc7464-3000.app.github.dev/favorite/${type}/${id}`, {
 						method: 'DELETE',
 						headers:{
 							'Content-Type':'application/json',
@@ -319,7 +259,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					if (response.status === 200) {
 						if (type === "people") {
 							let listFav = getStore().favorites[0];
-							const newListFav = listFav.filter((character) => character.uid !== uid);
+							const newListFav = listFav.filter((people) => people.uid !== id);
 							setStore({
 								favorites: [
 									newListFav,
@@ -329,7 +269,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 							})
 						} else if (type === "planets") {
 							let listFav = getStore().favorites[1];
-							const newListFav = listFav.filter((planet) => planet.uid !== uid);
+							const newListFav = listFav.filter((planets) => planets.uid !== id);
 							setStore({
 								favorites: [
 									getStore().favorites[0],
@@ -339,7 +279,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 							})
 						} else {
 							let listFav = getStore().favorites[2];
-							const newListFav = listFav.filter((vehicle) => vehicle.uid !== uid);
+							const newListFav = listFav.filter((vehicles) => vehicles.uid !== id);
 							setStore({
 								favorites: [
 									getStore().favorites[0],
