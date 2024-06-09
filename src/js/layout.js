@@ -10,6 +10,7 @@ import { Footer } from "./component/footer";
 import { Detalles } from "./views/detalles";
 import { Login } from "./views/login";
 import { Favorites } from "./views/favorites";
+import { Signup } from "./views/signup.js";
 
 //create your first component
 const Layout = () => {
@@ -26,6 +27,7 @@ const Layout = () => {
 						<Route path="/" element={<Home />} />
 						<Route path="/detalles/:type/:uid" element={<Detalles />} />
 						<Route path="/login" element={<Login />} />
+						<Route path="/signup" element={<Signup />} />
 						<Route path="/favorites" element={<Favorites />} />
 						<Route path="*" element={<h1>Not found!</h1>} />
 					</Routes>

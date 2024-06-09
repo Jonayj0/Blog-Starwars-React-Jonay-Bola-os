@@ -1,16 +1,15 @@
 import React, { useEffect, useContext, useState } from "react";
 import { Context } from "../store/appContext";
+import { SignupForm } from "../component/signupform.jsx";
 
-import { LoginForm } from "../component/loginform.jsx";
-
-export const Login = () => {
+export const Signup = () => {
 
 	const { store, actions } = useContext(Context)
 
 
 	return (
-		<div className="Login container">
-            <LoginForm />
+		<div className="Signup container">
+            <SignupForm />
 		</div>
 	)
 };
