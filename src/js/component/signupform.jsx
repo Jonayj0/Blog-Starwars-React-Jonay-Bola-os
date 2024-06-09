@@ -17,10 +17,9 @@ export const SignupForm = () => {
     async function handleSubmit(e) {
         e.preventDefault()
         console.log();
-        const isLogged = await actions.login(email, password, name)
-        if (isLogged) {
-            actions.getFavorites()
-            navigate("/");
+        const signedUp = await actions.signup(email, password, name)
+        if (signedUp) {
+            navigate("/login");
         }
     }
 

@@ -43,6 +43,39 @@ const getState = ({ getStore, getActions, setStore }) => {
 			logout: () => {
 				localStorage.removeItem("token")
 		 	},
+			signup: async (email, password, name) => {
+				try {
+					let response = await fetch("https://ominous-succotash-4j7wgw444x6gc7464-3000.app.github.dev/signup", {
+						method: 'POST',
+						headers: {
+							'Content-Type': 'application/json'
+						},
+						body: JSON.stringify({
+							email: email,
+							password: password,
+							name: name
+						})
+					})
+					if (!response.ok) {
+						const errorData = await response.json()
+						console.log(errorData);
+						throw new Error(errorData.msg)
+					}
+					let data = await response.json()
+					if (data) {
+						console.log(data);
+						navigate("/login")
+						return data.msg;
+					} else {
+						console.log(data);
+						return false
+					}
+				} catch (error) {
+					console.log(error.message);
+					return error.message;
+				}
+
+			},
 			getFavorites: async () => {
 				let token = localStorage.getItem("token")
 				try{
