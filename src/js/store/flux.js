@@ -14,7 +14,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			},
 			login: async (email, password, name) => {
 				try{
-				let response = await fetch("https://ominous-succotash-4j7wgw444x6gc7464-3000.app.github.dev/login", {
+				let response = await fetch("https://studious-garbanzo-69g4r4666jw5f5gv6-3000.app.github.dev/login", {
 					method: 'POST',
 					headers:{
 						'Content-Type':'application/json'
@@ -45,7 +45,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 		 	},
 			signup: async (email, password, name) => {
 				try {
-					let response = await fetch("https://ominous-succotash-4j7wgw444x6gc7464-3000.app.github.dev/signup", {
+					let response = await fetch("https://studious-garbanzo-69g4r4666jw5f5gv6-3000.app.github.dev/signup", {
 						method: 'POST',
 						headers: {
 							'Content-Type': 'application/json'
@@ -79,7 +79,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			getFavorites: async () => {
 				let token = localStorage.getItem("token")
 				try{
-					let response = await fetch("https://ominous-succotash-4j7wgw444x6gc7464-3000.app.github.dev/users/favorites", {
+					let response = await fetch("https://studious-garbanzo-69g4r4666jw5f5gv6-3000.app.github.dev/users/favorites", {
 						method: 'GET',
 						headers:{
 							'Content-Type':'application/json',
@@ -104,7 +104,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			addFavoritesCharacters: async (name, uid) => {
 				let token = localStorage.getItem("token")
 				try{
-				let response = await fetch(`https://ominous-succotash-4j7wgw444x6gc7464-3000.app.github.dev/favorite/people/${uid}`, {
+				let response = await fetch(`https://studious-garbanzo-69g4r4666jw5f5gv6-3000.app.github.dev/favorite/people/${uid}`, {
 					method: 'POST',
 					headers:{
 						'Content-Type':'application/json',
@@ -132,7 +132,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			deleteFavoritesCharacters: async (id) => {
 				let token = localStorage.getItem("token")
 				try{
-				let response = await fetch(`https://ominous-succotash-4j7wgw444x6gc7464-3000.app.github.dev/favorite/people/${id}`, {
+				let response = await fetch(`https://studious-garbanzo-69g4r4666jw5f5gv6-3000.app.github.dev/favorite/people/${id}`, {
 					method: 'DELETE',
 					headers:{
 						'Content-Type':'application/json',
@@ -172,7 +172,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			addFavoritesPlanets: async (name, uid) => {
 				let token = localStorage.getItem("token")
 				try{
-				let response = await fetch(`https://ominous-succotash-4j7wgw444x6gc7464-3000.app.github.dev/favorite/planet/${uid}`, {
+				let response = await fetch(`https://studious-garbanzo-69g4r4666jw5f5gv6-3000.app.github.dev/favorite/planet/${uid}`, {
 					method: 'POST',
 					headers:{
 						'Content-Type':'application/json',
@@ -200,7 +200,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			deleteFavoritesPlanets: async (id) => {
 				let token = localStorage.getItem("token")
 				try{
-				let response = await fetch(`https://ominous-succotash-4j7wgw444x6gc7464-3000.app.github.dev/favorite/planet/${id}`, {
+				let response = await fetch(`https://studious-garbanzo-69g4r4666jw5f5gv6-3000.app.github.dev/favorite/planet/${id}`, {
 					method: 'DELETE',
 					headers:{
 						'Content-Type':'application/json',
@@ -282,7 +282,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			removeFav: async (type, id) => {
 				const token = localStorage.getItem("token")
 				try {
-					const response = await fetch(`https://ominous-succotash-4j7wgw444x6gc7464-3000.app.github.dev/favorite/${type}/${id}`, {
+					const response = await fetch(`https://studious-garbanzo-69g4r4666jw5f5gv6-3000.app.github.dev/favorite/${type}/${id}`, {
 						method: 'DELETE',
 						headers:{
 							'Content-Type':'application/json',
